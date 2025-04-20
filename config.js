@@ -13,12 +13,3 @@ module.exports = (app) => {
   app.use(express.json());
   app.use(cookieParser());
 };
-
-/*module.exports ={
-    mysql:{
-        host: process.env.MYSQL_HOST || 'localhost',
-        user: process.env.MYSQL_USER || 'david',
-        password: process.env.MYSQL_PASSWORD || '9780946',
-        database: process.env.MYSQL_DB || 'futbol_sis'
-    }   
-}*/
