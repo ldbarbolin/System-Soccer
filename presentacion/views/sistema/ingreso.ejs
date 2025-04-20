@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- 
+    include('head_global', 
+            { styleFileName: 'ingreso_style.css', 
+              pageTitle: 'Competize SCZ Ingreso' }
+          ); 
+    %>
+<body>
+  <nav class="ingreson">
+    <H1>COMPETIZE SCZ</H1>
+  </nav>
+        <div class="cont_log">
+          <h2 id="caja-login">Ingresar</h2>
+          <form action="/ingreso" method="post" onsubmit="return validarEntradas()">
+            
+            <div class="input_caja">
+              <span>Nombre de usuario</span>
+              <input name="nombreUsuario" type="text" placeholder="Introduce nombre de usuario" autocomplete="off" pattern="[a-zA-Z_]+" autofocus required />
+              <div class="mensaje-error">
+                  Sólo letras y guion bajo
+              </div>
+            </div>
+            <div class="input_caja">
+              <span>Contraseña</span>
+              <input name='contrasena' type='password' placeholder='Introduce contraseña' autocomplete="off" required/>
+            </div>
+            <div class="input_caja">
+              <input value="Ingresar" type="submit" class="logear" id="btn_loguear"/>
+            </div>
+            <% if (typeof mensaje !== 'undefined') { %>
+              <div id="mensaje_respuesta">
+                Credenciales invalidas
+              </div>
+            <% } %>
+          </form>
+        </div>
+</body>
+</html>

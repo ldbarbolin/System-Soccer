@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- 
+    include('../sistema/head_global', 
+            { styleFileName: 'style.css', 
+              pageTitle: 'Administrador' }
+          ); 
+    %>
+<body class="body">
+    <%- 
+    include('../sistema/nav_Admin.ejs', 
+    { 
+        nombreUsuario: nombreUsuario, 
+        nombreImgUsuario: nombreImgUsuario, 
+        idUsuario: idUsuario 
+    }); 
+%>
+
+</body>

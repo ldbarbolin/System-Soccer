@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- 
+    include('../../sistema/head_global', 
+            { styleFileName: 'style.css', 
+              pageTitle: 'Administrador' }
+          ); 
+    %>
+<body class="body">
+    <main class="main">
+        <%- 
+    include('../../sistema/nav_Admin.ejs', 
+    { 
+        nombreUsuario: nombreUsuario, 
+        nombreImgUsuario: nombreImgUsuario, 
+        idUsuario: idUsuario 
+    }); 
+%>
+        <div class="home-content">
+            <div class="nav-bar">
+                <h2>Administrador</h3>
+                <h2 name=""><%= nombreUsuario %></h2>
+                <img src="/img/<%= nombreImgUsuario %>" alt="Foto de perfil">
+            </div>
+            <div class="nav-bar-option">
+                <div class="options">
+                    <div class="option-home">
+                        <a href="/administrador/teams/<%=id_Evento%>">Equipos</a>
+                    </div>
+                    <div class="option-home">
+                        <a href="/administrador/clasificaciones/<%=id_Evento%>">Clasificaciones</a>
+                    </div>
+                    <div class="option-home">
+                        <a href="">Partidos</a>
+                    </div>
+                    <div class="option-home">
+                        <a href="">Jugadores</a>
+                    </div>
+                    <div class="option-home">
+                        <a href="">Arbitros</a>
+                    </div>
+                </div>
+            </div>
+            <div class="boton">
+            </div>
+            <div class="content-table">
+                <table>
+                    <thead>
+                        <tr>                            
+                            <td>Nro</td>
+                            <td>EQUIPOS</td>
+                            <td>POSICION</td>
+                            <td>PJ</td>
+                            <td>PG</td>
+                            <td>PE</td>
+                            <td>PP</td>
+                            <td>GF</td>
+                            <td>GC</td>
+                            <td>DF</td>
+                            <td>PTS</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let i=0; i<tablaC.length; i++){%>
+                        <tr>
+                            <td><%=[i+1]%></td>
+                            <td><%=tablaC[i].equipo%></td>
+                            <td><%=tablaC[i].POS%></td>
+                            <td><%=tablaC[i].PJ%></td>
+                            <td><%=tablaC[i].PG%></td>
+                            <td><%=tablaC[i].PE%></td>
+                            <td><%=tablaC[i].PP%></td>
+                            <td><%=tablaC[i].GF%></td>
+                            <td><%=tablaC[i].GC%></td>
+                            <td><%=tablaC[i].DG%></td>
+                            <td><%=tablaC[i].PTS%></td>
+                        </tr>
+                        <%}%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>

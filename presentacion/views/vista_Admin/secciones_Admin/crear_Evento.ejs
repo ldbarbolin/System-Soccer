@@ -1,0 +1,108 @@
+    <!DOCTYPE html>
+    <html lang="en">
+        <%- 
+        include('../../sistema/head_global', 
+                { styleFileName: 'style.css', 
+                pageTitle: 'Administrador' }
+            ); 
+        %>
+    <body class="body">
+        <main class="main">
+            <%- 
+        include('../../sistema/nav_Admin.ejs', 
+        { 
+            nombreUsuario: nombreUsuario, 
+            nombreImgUsuario: nombreImgUsuario, 
+            idUsuario: idUsuario 
+        }); 
+    %>
+
+    <div class="home-create">
+        <div class="nav-bar">
+            <h2>Administrador</h3>
+            <h2 name=""><%= nombreUsuario %></h2>
+            <img src="/img/<%= nombreImgUsuario %>" alt="Foto de perfil">
+        </div>
+        <div class="create-container">
+            <div class="title">
+                <h1>Nuevo Evento</h1>
+            </div>
+            <form class="form-container"  action="/administrador/crear_Evento" method="post">
+                <div class="box-input">
+                    <input type="text" placeholder="Nombre del evento" name="nombre">
+                </div>
+                <div class="box-input">
+                    <input type="text" placeholder="Temporada" name="temporada">
+                </div>
+                <div class="box-input">
+                    <select name="genero" id="">
+                        <option value="">Genero</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenino</option>
+                    </select>
+                </div>
+                <div class="box-input">
+                    <input type="number" placeholder="Numero de Grupos"name="nGrupos">
+                </div>
+                <div class="box-input" >
+                    <input type="date" placeholder="Fecha Inicio" name="fechaInicio">
+                </div>
+                <div class="box-input">
+                    <input type="date" placeholder="Fecha Final" name="fechaFinal">
+                </div>
+                <div class="box-input">
+                    <select name="consolacion" id="">
+                        <option value="">Consolación</option>
+                        <option value="3er y 4to Lugar">3er y 4to Lugar</option>
+                        <option value="Solo 3er">Solo 3er</option>
+                    </select>
+                </div>
+                <div class="box-input">
+                    <select name="tipoEvento" id="">
+                        <option value="">Tipo de Evento</option>
+                        <option value="1">Liga</option>
+                        <option value="2">Campeonato</option>
+                    </select>
+                </div>
+                <div class="box-input">
+                    <select name="categoria" id="">
+                        <option value="">Categoria</option>
+                        <% for(let i=0; i<datosCategoria.length; i++){%>
+                        <option value="<%=datosCategoria[i].id%>"><%=datosCategoria[i].nombre%> <%=datosCategoria[i].limite_edad%></option>
+                        <%}%>
+                    </select>
+                </div>
+                <div class="box-input">
+                    <select name="modalidad" id="">
+                        <option value="">Modalidad</option>
+                        <% for(let i=0; i<dModalidad.length; i++){%>
+                            <option value="<%=dModalidad[i].id%>"><%=dModalidad[i].tipo%></option>
+                            <%}%>
+                    </select>
+                </div>
+                <div class="box-input">
+                    <select name="tipoCompeticion" id="">
+                        <option value="">Tipo de Competición</option>
+                        <% for(let i=0; i<tCompeticion.length; i++){%>
+                            <option value="<%=tCompeticion[i].id%>"><%=tCompeticion[i].tipo%></option>
+                            <%}%>
+                    </select>
+                </div>
+                <div class="box-input">
+                    <select name="nVueltas" id="">
+                        <option value="">Numero de Vueltas</option>
+                        <option value="1">Ida y Vuelta</option>
+                        <option value="2">Solo de Ida</option>
+                        <option value="3">3 Vueltas</option>
+                    </select>
+                </div>
+                <div class="box-input-button">
+                    <div class="btn-cancelar">
+                        <a href="/administrador/Inicio">Cancelar</a>
+                    </div>
+                    <button class="btn-continuar">Registrar Evento</button>
+                </div>
+            </form>
+    </div>
+    </main>
+    </body>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- 
+    include('../../sistema/head_global', 
+            { styleFileName: 'style.css', 
+              pageTitle: 'Administrador' }
+          ); 
+    %>
+<body class="body">
+    <main class="main">
+        <%- 
+    include('../../sistema/nav_Admin.ejs', 
+    { 
+        nombreUsuario: nombreUsuario, 
+        nombreImgUsuario: nombreImgUsuario, 
+        idUsuario: idUsuario 
+    }); 
+%>
+
+        <div class="home-content">
+            <div class="nav-bar">
+                <h2>Administrador</h3>
+                <h2 name=""><%= nombreUsuario %></h2>
+                <img src="/img/<%= nombreImgUsuario %>" alt="Foto de perfil">
+            </div>
+            <div class="nav-bar-option">
+                <div class="options">
+                    <div class="option-home">
+                        <a href="/administrador/Inicio">Eventos</a>
+                    </div>
+                    <div class="option-home">
+                        <a href="/administrador/Institucion">Instituciones</a>
+                    </div>
+                    <div class="option-home">
+                        <a href="/administrador/Equipo">Equipos</a>
+                    </div>
+                    <div class="option-home">
+                        <a href="/administrador/Jugador">Jugadores</a>
+                    </div>
+                    <div class="option-home">
+                        <a href="/administrador/Arbitro">Arbitros</a>
+                    </div>
+                </div>
+            </div>
+            <div class="boton">
+                <div class="abutton">
+                    <a href="/administrador/crear_Jugador">Añadir Jugador</a>
+                </div>
+            </div>
+            <div class="content-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Nro</td>
+                            <td>NOMBRE</td>
+                            <td>EQUIPO</td>
+                            <td>DORSAL</td>
+                            <td>ESTADO</td>
+                            <td>GOLES</td>
+                            <td>ASISTENCIAS</td>
+                            <td>AUTOGOLES</td>
+                            <td>TARJETAS AMARILLAS</td>
+                            <td>TARJETAS ROJAS</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let i=0; i<datosJugador.length; i++){%>
+                        <tr>
+                            <td><%=i+1%></td>
+                            <td><%=datosJugador[i].jugador%></td>
+                            <td><%=datosJugador[i].equipo%></td>
+                            <td><%=datosJugador[i].dorsal%></td>
+                            <td><%=datosJugador[i].estadoJ%></td>
+                            <td><%=datosJugador[i].goles%></td>
+                            <td><%=datosJugador[i].asistencias%></td>
+                            <td><%=datosJugador[i].autogoles%></td>
+                            <td><%=datosJugador[i].tarjetas_amarillas%></td>
+                            <td><%=datosJugador[i].tarjetas_rojas%></td>
+                        </tr>
+                        <%}%>
+                    </tbody>
+                </table>
+            </div>            
+        </div>
+    </main>
+</body>

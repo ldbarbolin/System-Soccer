@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- 
+    include('../../sistema/head_global', 
+            { styleFileName: 'style.css', 
+            pageTitle: 'Administrador' }
+        ); 
+    %>
+<body class="body">
+    <main class="main">
+        <%- 
+    include('../../sistema/nav_Admin.ejs', 
+    { 
+        nombreUsuario: nombreUsuario, 
+        nombreImgUsuario: nombreImgUsuario, 
+        idUsuario: idUsuario 
+    }); 
+%>
+
+<div class="home-create">
+    <div class="nav-bar">
+        <h2>Administrador</h3>
+        <h2 name=""><%=nombreUsuario %></h2>
+        <img src="/img/<%= nombreImgUsuario %>" alt="Foto de perfil">
+    </div>
+    <div class="create-container">
+        <div class="title">
+            <h1>Añadir Jugador</h1>
+        </div>
+        <form class="form-container"  action="/administrador/crear_Jugador" method="post">
+            <div class="box-input">
+                <input type="text" placeholder="Nombre" name="nombre">
+            </div>
+            <div class="box-input">
+                <input type="text" placeholder="Carnet de Identidad" name="ci">
+            </div>
+            <div class="box-input">
+                <input type="date" placeholder="fecha de Nacimiento"name="fecha_nacimiento">
+            </div>
+            <div class="box-input">
+                <input type="text" placeholder="Apellido Paterno" name="apellido_paterno">
+            </div>
+            <div class="box-input">
+                <input type="text" placeholder="Apellido Materno" name="apellido_materno">
+            </div>
+            <div class="box-input">
+                <input type="text" placeholder="Telefono" name="telefono">
+            </div>
+            <div class="box-input">
+                <select name="genero" id="">
+                    <option value="">Genero</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+            </div>
+            <div class="box-input">
+                <input type="email" placeholder="Correo Electronico" name="correo">
+            </div>
+            <div class="box-input">
+                <input type="text" placeholder="Dorsal" name="dorsal">
+            </div>
+            <div class="box-input">
+                <input type="text" placeholder="Posicion" name="posicion">
+            </div>
+            <div class="box-input">
+                <select name="equipo" id="">
+                    <option value="">Equipo</option>
+                    <% for (let i = 0; i<datosEquipo.length; i++){%>
+                    <option value="<%=datosEquipo[i].id_equipo%>"><%=datosEquipo[i].nombre_equipo %> - <%=datosEquipo[i].categoria %> - <%=datosEquipo[i].genero%></option>
+                    <%}%>
+                </select>
+            </div>
+            <div class="box-input-button">
+                <div class="btn-cancelar">
+                    <a href="/administrador/Jugador">Cancelar</a>
+                </div>
+                <button class="btn-continuar">Registrar Jugador</button>
+            </div>
+        </form>
+</div>
+</main>
+</body>

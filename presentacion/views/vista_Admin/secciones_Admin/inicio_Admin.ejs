@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- 
+    include('../../sistema/head_global', 
+            { styleFileName: 'style.css', 
+              pageTitle: 'Administrador' }
+          ); 
+    %>
+<body class="body">
+    <main class="main">
+        <%- 
+    include('../../sistema/nav_Admin.ejs', 
+    { 
+        nombreUsuario: nombreUsuario, 
+        nombreImgUsuario: nombreImgUsuario, 
+        idUsuario: idUsuario 
+    }); 
+%>
+        <div class="home-content">
+            <div class="nav-bar">
+                <h2>Administrador</h3>
+                <h2 name=""><%= nombreUsuario %></h2>
+                <img src="/img/<%= nombreImgUsuario %>" alt="Foto de perfil">
+            </div>
+            <div class="nav-bar-option">
+                <div class="options">
+                    <div class="option-home">
+                        <a href="/administrador/Inicio">Eventos</a>
+                    </div>
+                    <div class="option-home">
+                        <a href="/administrador/Institucion">Instituciones</a>
+                    </div>
+                    <div class="option-home">
+                        <a href="/administrador/Equipo">Equipos</a>
+                    </div>
+                    <div class="option-home">
+                        <a href="/administrador/Jugador">Jugadores</a>
+                    </div>
+                    <div class="option-home">
+                        <a href="/administrador/Arbitro">Arbitros</a>
+                    </div>
+                </div>
+            </div>
+            <div class="boton">
+                <div class="abutton">
+                    <a href="/administrador/crear_Evento">Organizar Evento</a>
+                </div>
+            </div>
+            <div class="content-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Nro</td>
+                            <td>NOMBRE</td>
+                            <td>DEPORTE</td>
+                            <td>GENERO</td>
+                            <td>N.GRUPOS</td>
+                            <td>FECHA INICIO</td>
+                            <td>FECHA FINAL</td>
+                            <td>CATEGORIA</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let i=0; i<datosEvento.length; i++){%>
+                        <tr>
+                            <td><%=[i+1]%></td>
+                            <td><a href="/administrador/teams/<%=datosEvento[i].id%>"><%=datosEvento[i].nombre%></a></td>
+                            <td><%=datosEvento[i].deporte%></td>
+                            <td><%=datosEvento[i].genero%></td>
+                            <td><%=datosEvento[i].n_Grupos%></td>
+                            <td><%=datosEvento[i].fecha_Inicio%></td>
+                            <td><%=datosEvento[i].fecha_Final%></td>
+                            <td><%=datosEvento[i].categoria%></td>
+                        </tr>
+                        <%}%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>

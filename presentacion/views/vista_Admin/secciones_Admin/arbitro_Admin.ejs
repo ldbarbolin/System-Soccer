@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- 
+    include('../../sistema/head_global', 
+            { styleFileName: 'style.css', 
+              pageTitle: 'Administrador' }
+          ); 
+    %>
+<body class="body">
+    <main class="main">
+        <%- 
+    include('../../sistema/nav_Admin.ejs', 
+    { 
+        nombreUsuario: nombreUsuario, 
+        nombreImgUsuario: nombreImgUsuario, 
+        idUsuario: idUsuario 
+    }); 
+%>
+        <div class="home-content">
+            <div class="nav-bar">
+                <h2>Administrador</h3>
+                <h2 name=""><%= nombreUsuario %></h2>
+                <img src="/img/<%= nombreImgUsuario %>" alt="Foto de perfil">
+            </div>
+            <div class="nav-bar-option">
+                <div class="options">
+                    <div class="option-home">
+                        <a href="/administrador/Inicio">Eventos</a>
+                    </div>
+                    <div class="option-home">
+                        <a href="/administrador/Institucion">Instituciones</a>
+                    </div>
+                    <div class="option-home">
+                        <a href="/administrador/Equipo">Equipos</a>
+                    </div>
+                    <div class="option-home">
+                        <a href="/administrador/Jugador">Jugadores</a>
+                    </div>
+                    <div class="option-home">
+                        <a href="/administrador/Arbitro">Arbitros</a>
+                    </div>
+                </div>
+            </div>
+            <div class="boton">
+                <div class="abutton">
+                    <a href="">Añadir Arbitro</a>
+                </div>
+            </div>
+            <div class="content-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>NOMBRE</td>
+                            <td>CATEGORIA</td>
+                            <td>COLORES</td>
+                            <td>FUNDACION</td>
+                            <td>PRESIDENTE</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </th>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- 
+    include('../../sistema/head_global', 
+            { styleFileName: 'style.css', 
+            pageTitle: 'Administrador' }
+        ); 
+    %>
+<body class="body">
+    <main class="main">
+        <%- 
+    include('../../sistema/nav_Admin.ejs', 
+    { 
+        nombreUsuario: nombreUsuario, 
+        nombreImgUsuario: nombreImgUsuario, 
+        idUsuario: idUsuario 
+    }); 
+%>
+
+<div class="home-create">
+    <div class="nav-bar">
+        <h2>Administrador</h3>
+        <h2 name=""><%=nombreUsuario %></h2>
+        <img src="/img/<%= nombreImgUsuario %>" alt="Foto de perfil">
+    </div>
+    <div class="create-container">
+        <div class="title">
+            <h1>Nuevo Equipo</h1>
+        </div>
+        <form class="form-container"  action="/administrador/crear_Equipo" method="POST">
+            <div class="box-input">
+                <select name="institucion" id="">
+                    <option value="">Institucion</option>
+                    <% for(let i=0; i<nombreInstitucion.length; i++){%>
+                        <option value="<%=nombreInstitucion[i].id%>"><%=nombreInstitucion[i].nombre%></option>
+                        <%}%>
+                </select>
+            </div>
+            <div class="box-input">
+                <select name="categoria" id="">
+                    <option value="">Categoria</option>
+                    <% for(let i=0; i<datosCategoria.length; i++){%>
+                    <option value="<%=datosCategoria[i].id%>"><%=datosCategoria[i].nombre%> <%=datosCategoria[i].limite_edad%></option>
+                    <%}%>
+                </select>
+            </div>
+            <div class="box-input">
+                <select name="genero" id="">
+                    <option value="">Genero</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+            </div>
+            <div class="box-input-button">
+                <div class="btn-cancelar">
+                    <a href="/administrador/Equipo">Cancelar</a>
+                </div>
+                <button type="submit" class="btn-continuar">Registrar Equipo</button>
+            </div>
+        </form>
+    </div>
+</main>
+</body>
